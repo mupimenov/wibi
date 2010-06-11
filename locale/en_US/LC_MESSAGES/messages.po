@@ -1,0 +1,284 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-03-29 16:38+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: entity/block-action.php:57
+#, php-format
+msgid "block %s is saved"
+msgstr ""
+
+#: entity/block-action.php:66
+#, php-format
+msgid "block is removed"
+msgstr ""
+
+#: entity/block-action.php:86
+#, php-format
+msgid "block is created"
+msgstr ""
+
+#: entity/block-action.php:139 entity/page-action.php:198
+#: entity/page-action.php:211 entity/page-action.php:231
+#: entity/tag-action.php:129
+msgid "edit"
+msgstr ""
+
+#: entity/comment-action.php:44
+msgid "can not create comment: what is the page?"
+msgstr ""
+
+#: entity/comment-action.php:55 entity/comment-action.php:129
+#, php-format
+msgid "commenting is disabled"
+msgstr ""
+
+#: entity/comment-action.php:68
+msgid "author's name is empty"
+msgstr ""
+
+#: entity/comment-action.php:72
+msgid "your message is useless"
+msgstr ""
+
+#: entity/comment-action.php:76
+msgid "your prime number is not valid"
+msgstr ""
+
+#: entity/comment-action.php:82
+msgid "comment is created: "
+msgstr ""
+
+#: entity/comment-action.php:97
+#, php-format
+msgid "comment by %s is removed"
+msgstr ""
+
+#: entity/comment-action.php:122 entity/comment-action.php:139
+#, php-format
+msgid "%s comment(s)"
+msgstr ""
+
+#: entity/comment-action.php:174
+msgid "comments"
+msgstr ""
+
+#: entity/comment-action.php:174
+msgid "disable comments"
+msgstr ""
+
+#: entity/config-action.php:42
+msgid "site configs are saved"
+msgstr ""
+
+#: entity/config-action.php:54
+msgid "site configuration"
+msgstr ""
+
+#: entity/page-action.php:83
+msgid "where is page's id?"
+msgstr ""
+
+#: entity/page-action.php:108
+msgid "(no title)"
+msgstr ""
+
+#: entity/page-action.php:112 entity/page-action.php:145
+msgid "(empty body)"
+msgstr ""
+
+#: entity/page-action.php:122
+msgid "page is created"
+msgstr ""
+
+#: entity/page-action.php:141
+msgid "(empty title)"
+msgstr ""
+
+#: entity/page-action.php:149
+msgid "page is updated"
+msgstr ""
+
+#: entity/page-action.php:167
+#, php-format
+msgid "page (%s) is removed"
+msgstr ""
+
+#: entity/tag-action.php:46
+msgid "where tag's id?"
+msgstr ""
+
+#: entity/tag-action.php:59
+#, php-format
+msgid "pages for tag <i>%s</i>"
+msgstr ""
+
+#: entity/tag-action.php:64
+#, php-format
+msgid "there are no pages for tag <i>%s</i>"
+msgstr ""
+
+#: entity/tag-action.php:69
+msgid "list of the tags - "
+msgstr ""
+
+#: entity/tag-action.php:85
+#, php-format
+msgid "tag %s is updated"
+msgstr ""
+
+#: entity/tag-action.php:96
+#, php-format
+msgid "tag %s is removed"
+msgstr ""
+
+#: entity/tag-action.php:121 entity/tag-action.php:134
+#: entity/tag-action.php:154 entity/tag-action.php:190
+msgid "tags"
+msgstr ""
+
+#: entity/user-action.php:60
+msgid "you logged in"
+msgstr ""
+
+#: entity/user-action.php:62
+msgid "password is wrong"
+msgstr ""
+
+#: entity/user-action.php:67
+msgid "where is no user with such login"
+msgstr ""
+
+#: entity/user-action.php:78
+msgid "you logged out"
+msgstr ""
+
+#: entity/user-action.php:86
+msgid "where user's id?"
+msgstr ""
+
+#: entity/user-action.php:115
+msgid "user name is changed"
+msgstr ""
+
+#: entity/user-action.php:120
+msgid "user passwords is changed"
+msgstr ""
+
+#: entity/user-action.php:122
+msgid "passwords is not saved: you made a mistake repeating password"
+msgstr ""
+
+#: entity/user-action.php:173
+msgid "log out"
+msgstr ""
+
+#: entity/user-action.php:176
+msgid "log in"
+msgstr ""
+
+#: entity/user-action.php:178
+msgid "hello"
+msgstr ""
+
+#: entity/user-action.php:204
+msgid "config"
+msgstr ""
+
+#: entity/tpl/block-form.tpl:2 entity/tpl/comment-form.tpl:2
+#: entity/tpl/page-edit.tpl:2 entity/tpl/tag-form.tpl:2
+msgid "save"
+msgstr ""
+
+#: entity/tpl/block-form.tpl:4 entity/tpl/comment-form.tpl:4
+msgid "name:"
+msgstr ""
+
+#: entity/tpl/block-form.tpl:6
+msgid "show block name?"
+msgstr ""
+
+#: entity/tpl/block-form.tpl:7
+msgid "position:"
+msgstr ""
+
+#: entity/tpl/comment-form.tpl:7
+msgid ""
+"Type the nearest <a href=\"http://en.wikipedia.org/wiki/Prime_number\" title="
+"\"Prime number (Wikipedia)\">prime number</a> greater than"
+msgstr ""
+
+#: entity/tpl/comment-last.tpl:2
+msgid "Last comments"
+msgstr ""
+
+#: entity/tpl/config-form.tpl:3 entity/tpl/user-config-form.tpl:4
+msgid "save config"
+msgstr ""
+
+#: entity/tpl/config-form.tpl:4
+msgid "site title:"
+msgstr ""
+
+#: entity/tpl/config-form.tpl:6
+msgid "site url"
+msgstr ""
+
+#: entity/tpl/config-form.tpl:8
+msgid "number of posts on main page"
+msgstr ""
+
+#: entity/tpl/page-edit.tpl:8
+msgid "stick the page"
+msgstr ""
+
+#: entity/tpl/page-error.tpl:2
+msgid "welcome to error page!"
+msgstr ""
+
+#: entity/tpl/page-qcreate.tpl:3
+msgid "create"
+msgstr ""
+
+#: entity/tpl/pages-locked.tpl:2
+msgid "sticked pages:"
+msgstr ""
+
+#: entity/tpl/user-config-form.tpl:5
+msgid "user name:"
+msgstr ""
+
+#: entity/tpl/user-config-form.tpl:7
+msgid "user password (repeat twice):"
+msgstr ""
+
+#: entity/tpl/user-home.tpl:2
+msgid "Wibi welcomes you, "
+msgstr ""
+
+#: entity/tpl/user-login-form.tpl:4
+msgid "login:"
+msgstr ""
+
+#: entity/tpl/user-login-form.tpl:6
+msgid "password:"
+msgstr ""
+
+msgid "RSS for pages"
+msgstr ""
+
+msgid "RSS for comments"
+msgstr ""
