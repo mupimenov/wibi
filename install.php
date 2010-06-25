@@ -51,6 +51,7 @@ require_once 'entity/user.php';
 require_once "entity/tag.php";
 require_once "entity/comment.php";
 require_once 'entity/block.php';
+require_once 'entity/activity.php';
 
 class Install extends Action {
 
@@ -79,6 +80,7 @@ class Install extends Action {
         Tag::install(array("update" => true));
         Comment::install(array("update" => true));
         Block::install(array("update" => true));
+        Activity::install(array("update" => true));
 
         echo UtilsEx::a('to blog');
     }
@@ -139,6 +141,7 @@ class Install extends Action {
         Tag::install(array("update" => false));
         Comment::install(array("update" => false));
         Block::install(array("update" => false));
+        Activity::install(array("update" => false));
 
         echo UtilsEx::a('to blog');
     }

@@ -53,6 +53,9 @@ require_once 'entity/block-action.php';
 
 require_once 'entity/rss-action.php';
 
+require_once 'entity/activity.php';
+require_once 'entity/activity-action.php';
+
 require_once 'core/box.php';
 require_once "core/manager.php";
 
@@ -72,6 +75,7 @@ Manager::add_action(new TagAction());
 Manager::add_action(new CommentAction());
 Manager::add_action(new BlockAction());
 Manager::add_action(new RssAction());
+Manager::add_action(new ActivityAction());
 
 # Запускаем процесс обработки экшна
 Manager::manage();

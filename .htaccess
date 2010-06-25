@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Частные случаи
+RewriteRule ^page/viewlast/([0-9]+)/?$ index.php?entity=page&action=viewlast&offset=$1 [L]
+
+# Общие случаи
+RewriteRule ^([a-z]+)/([a-z]+)/?$ index.php?entity=$1&action=$2 [L]
+RewriteRule ^([a-z]+)/([a-z]+)/([0-9]*)/?$ /index.php?entity=$1&action=$2&id=$3 [L]
+
+
