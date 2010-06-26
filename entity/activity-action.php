@@ -22,7 +22,7 @@
 
 class ActivityAction extends Action {
     
-    public function BlockAction(){
+    public function ActivityAction(){
         $this->entity_name = "activity";
         $this->available_funcs = array("viewall", "edit", "onedit", "refresh", "remove", "oncreate");
         $this->protected_funcs = array( "edit" => array("edit", "onedit", "refresh"),
@@ -30,7 +30,11 @@ class ActivityAction extends Action {
                                         "create" => array("oncreate"));
     }
     
-    public function viewall() {
+    public static function listen() {
+        UserAction::add_listener_after_render_user_home( array( "ActivityAction", "render_viewall_link" ) );
+    }
+    
+    public function viewall() {    
         self::render_all_activities();
     }
     
@@ -41,20 +45,20 @@ class ActivityAction extends Action {
     }
     
     public function onedit() {
-        $activity_id = Validator::numeric($this->parms["id"]);
-        $a = Activity::get_present($activity_id);
+        $activity_id = Validator::numeric($this->parms["activity_id"]);
+        $a = Activity::get_present($activity_id);        
         $a->url = $this->parms["activity_url"];
         
         $a_s = Activity::save($a);
         Logger::addMsg(sprintf(_("url <i>%s</i> is edited"), $a_s->url));
-        self::redirect_to(Utils::path("activity", "editall"));
+        self::redirect_to(Utils::path("activity", "viewall"));
     }
     
     public function refresh() {
         $as = Activity::get_all_activities();
         $cs = self::curls_activities($as);
         
-        for ($i = 0; $i < count( $as ); %i++) {
+        for ($i = 0; $i < count( $as ); $i++) {
             $current_md5 = md5( $cs[$i] );
             if ( $current_md5 != $as[$i]->md5 ) {
                 $as[$i]->md5 = $current_md5;
@@ -86,6 +90,9 @@ class ActivityAction extends Action {
     
     static function curls_activities($as) {
     
+        //return;
+        if (count( $as ) == 0) return;
+        
         $master = curl_multi_init( );
         $cis = array();
         
@@ -112,38 +119,45 @@ class ActivityAction extends Action {
     }
     
     public static function render_all_activities($parms = null) {
-    
-        $as = Activity::get_all_activities( );        
+        echo '<h2>' . _("Activities") . '</h2>';
+        echo Utils::link( _("refresh activities"), Utils::path( "activity", "refresh" ) );
+        
+        $as = Activity::get_all_activities( ); 
+               
         $cs = self::curls_activities($as);
-
+        
         /* вывод результатов */
-        for ( $i = 0; $i < count( $cs ); $i++ ) {        
-            
-            $current_md5 = md5( $cs[$i] );
-            
-            preg_match('/<title>(.*)<\/title>/i', $cs[$i], $matches);
-            $title = $matches[1];
-            
+        for ( $i = 0; $i < count( $as ); $i++ ) {        
+            $title = $as[$i]->url;
             $new_activity = "";
-            if ( $current_md5 != $as[$i]->md5 ) {
-                $new_activity = "newactivity";
+            
+            if ($cs[$i]) {                
+                $current_md5 = md5( $cs[$i] );            
+                preg_match('/<title>(.*)<\/title>/isU', $cs[$i], $matches);
+                $title = $matches[1];            
+                $new_activity = "";
+                if ( $current_md5 != $as[$i]->md5 ) {
+                    $new_activity = "newactivity";
+                }
             }
             
             self::render_activity_block( array( "activity" => $as[$i],
                                                  "title" => $title,
                                                  "newactivity" => $new_activity ) );
+            
         }
         /* вывести формочку */
         self::render_activity_create_form();
     }
     
     public static function render_activity_block($parms = null) {
+        
         $a = $parms["activity"];
         $activity_id = $a->id;
-        $activity_title = $parms["title"]; /* ссылка на сайт */
+        $activity_title = Utils::link( $parms["title"], $a->url ); /* ссылка на сайт */
         $activity_new = $parms["newactivity"]; /* на сайте есть изменения */
         
-        $activity_ctl = User::ctl( array ( 
+        $activity_ctl = UserAction::ctl( array ( 
             "edit" => Utils::link( _("edit"), Utils::path( "activity", "edit", array( "id" => $a->id ) ) ),
             "remove" => Utils::clink( "x", Utils::path( "activity", "remove", array( "id" => $a->id ) ) ) ) );
         
@@ -170,7 +184,9 @@ class ActivityAction extends Action {
         include 'tpl/activity-form.tpl';
     }
     
-    
+    public static function render_viewall_link($parms = null) {
+        echo "<div>" . Utils::link( _("show activities"), Utils::path( "activity", "viewall" ) ) . "</div>";
+    }
 
 }
 ?>

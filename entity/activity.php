@@ -39,7 +39,7 @@ class Activity extends Entity {
     public static function get_present($id) {
         $r = DB::sqlRow("SELECT * FROM `activities` WHERE `id`=$id ORDER BY `id` DESC LIMIT 1;");
         if ($r) {
-            return new Activity($r["url"], $r["md5"]);
+            return new Activity($r["url"], $r["md5"], $r["id"]);
         } else {
             return null;
         }
@@ -65,14 +65,13 @@ class Activity extends Entity {
     }
 
     public static function save($a) {
-        if ($a->id) {            
-            DB::exec("UPDATE `activities` SET `url`='".$a->url."', `md5`='".$a->md5."' WHERE `id`=$a->id;");
-            return $a;
+        if ($a->id) {
+            DB::exec("UPDATE `activities` SET `url`='".$a->url."', `md5`='".$a->md5."' WHERE `id`=$a->id;");            
         } else {
             DB::exec("INSERT INTO `activities` (`url`,`md5`) VALUES ('".$a->url."','".$a->md5."');");
-            $a->id = self::get_last_id();
-            return $a;
+            $a->id = self::get_last_id();            
         }
+        return $a;
     }
     
     static function install($config = null) {

@@ -65,6 +65,7 @@ Format::init();
 // apply listeners
 ConfigAction::listen();
 TagAction::listen();
+ActivityAction::listen();
 CommentAction::listen();
 BlockAction::listen();
 
