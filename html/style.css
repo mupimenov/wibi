@@ -154,7 +154,7 @@ h1, h2, h3, h4, h5, h6 {text-align: left;}
 
 /* user */
 .frm, .activity 
-{margin: auto; padding: 10px; width: 300px;
+{margin: auto auto 10px auto; padding: 10px; width: 300px;
  background-color: #f0f4f3; -moz-border-radius: 5px;}
 
 /* tags */

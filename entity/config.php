@@ -23,6 +23,13 @@
 
 class Config extends Entity {
 
+    static function exists($key) {
+        $q = DB::sqlRow("SELECT * FROM `configs` WHERE `key`='$key';");
+        if ($q)
+            return true;        
+        return false;
+    }
+
     static function getValue($key) {        
         $q = DB::sqlRow("SELECT * FROM `configs` WHERE `key`='$key';");        
         return $q["value"];

@@ -21,6 +21,7 @@
  *      MA 02110-1301, USA.
  */
 
+/***** CORE *****/
 require_once "configenv.php";
 require_once "configdb.php";
 require_once 'core/logger.php';
@@ -30,43 +31,60 @@ require_once "core/entity.php";
 require_once "core/db.php";
 require_once 'core/utils.php';
 
+/***** Textile *****/
 require_once 'core/format.php';
 
+/***** Config module *****/
 require_once 'entity/config.php';
 require_once 'entity/config-action.php';
 
+/***** Pages (or Posts) *****/
 require_once "entity/page.php";
 require_once "entity/page-action.php";
 
+/***** User rights *****/
 require_once 'entity/user.php';
 require_once 'entity/user-action.php';
 
-// Tags
+/***** Tags *****/
 require_once "entity/tag.php";
 require_once "entity/tag-action.php";
 
+/***** Comments *****/
+// out of the box
 require_once "entity/comment.php";
 require_once "entity/comment-action.php";
+// or Intense Debate
+require_once 'entity/debate.php';
+require_once 'entity/debate-action.php';
 
+/***** Blocks on right side: counters or some another shit. *****/
 require_once 'entity/block.php';
 require_once 'entity/block-action.php';
 
+/***** RSS *****/
 require_once 'entity/rss-action.php';
 
+/***** Activity is an experimental useless module. *****/
 require_once 'entity/activity.php';
 require_once 'entity/activity-action.php';
 
+/***** Box is a group tool to render output data. *****/
 require_once 'core/box.php';
+
+/***** God *****/
 require_once "core/manager.php";
 
-// inits
+/***** Init the Textile module. *****/
 Format::init();
 
-// apply listeners
+/***** Apply the listeners. *****/
 ConfigAction::listen();
 TagAction::listen();
 ActivityAction::listen();
-CommentAction::listen();
+/***** Comments: CommentAction !OR! DebateAction *****/
+//CommentAction::listen();
+DebateAction::listen();
 BlockAction::listen();
 
 Manager::add_action(new ConfigAction());
@@ -74,11 +92,12 @@ Manager::add_action(new PageAction());
 Manager::add_action(new UserAction());
 Manager::add_action(new TagAction());
 Manager::add_action(new CommentAction());
+Manager::add_action(new DebateAction());
 Manager::add_action(new BlockAction());
 Manager::add_action(new RssAction());
 Manager::add_action(new ActivityAction());
 
-# Запускаем процесс обработки экшна
+/***** God makes the choice. *****/
 Manager::manage();
 
 ?>

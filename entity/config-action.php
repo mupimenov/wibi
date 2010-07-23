@@ -23,10 +23,16 @@
 
 class ConfigAction extends Action {
 
+    static $after_render_config_form = array();
+
     public function ConfigAction() {
         $this->entity_name = "config";
         $this->available_funcs = array("edit", "onedit");
         $this->protected_funcs = array( "edit" => array( "edit", "onedit" ) );
+    }
+    
+    public static function add_listener_after_render_config_form($f) {
+       self::$after_render_config_form[] = $f;
     }
 
     public function edit() {
@@ -62,7 +68,9 @@ class ConfigAction extends Action {
         $site_url = Config::getValue("site_url");
         $page_last_limit = Config::getValue("page_last_limit");
         // out
-        include 'tpl/config-form.tpl';;
+        include 'tpl/config-form.tpl';
+        
+        self::invoke_listeners(self::$after_render_config_form, $parms);
     }
 }
 ?>
